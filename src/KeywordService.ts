@@ -17,8 +17,8 @@ const ActionKeywordMap: { [key: string]: Keyword[] } = {
 const tokenizeString = (text: string): string[] => text.toLowerCase().split(" ");
 
 export const transcriptContainsKeyword = (transcript: string): ActionAndKeyword[] =>
-    ActionKeywordMap["get-person"]
-        .filter(keyword => tokenizeString(transcript).includes(keyword))
+    tokenizeString(transcript)
+        .filter(token => ActionKeywordMap["get-person"].includes(token))
         .map(keyword => ({
             id: shortid.generate(),
             action: "get-person",
