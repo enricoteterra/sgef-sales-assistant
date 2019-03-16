@@ -101,7 +101,7 @@ class PersonCardComponent extends React.Component<PersonCardProps, PersonCardSta
                         if you like.
                     </Typography>
                 </CardContent> */}
-                <CardActions className={classes.actions} disableActionSpacing>
+                {/* <CardActions className={classes.actions} disableActionSpacing>
                     <IconButton aria-label="Add to favorites">
                         <FavoriteIcon />
                     </IconButton>
@@ -118,7 +118,7 @@ class PersonCardComponent extends React.Component<PersonCardProps, PersonCardSta
                     >
                         <ExpandMoreIcon />
                     </IconButton>
-                </CardActions>
+                </CardActions> */}
                 <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
                     <CardContent>
                         <Typography paragraph>Method:</Typography>

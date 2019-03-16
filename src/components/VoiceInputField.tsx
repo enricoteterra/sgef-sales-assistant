@@ -7,6 +7,7 @@ import * as styles from "./VoiceInputField.css";
 
 interface SpeechRecognitionProps {
     transcript: string;
+    finalTranscript: string;
     resetTranscript: () => {};
     browserSupportsSpeechRecognition: boolean;
 }
@@ -19,29 +20,36 @@ interface VoiceInputFieldState {
     processedTranscript: string;
 }
 
-class VoiceInputField extends React.Component<
+export class VoiceInputField extends React.Component<
     SpeechEnabledVoiceInputFieldProps,
     VoiceInputFieldState
 > {
-    public constructor(props: any) {
+    public constructor(props: SpeechEnabledVoiceInputFieldProps) {
         super(props);
         this.state = {
             processedTranscript: "",
         };
     }
     public componentDidUpdate(prevProps: SpeechEnabledVoiceInputFieldProps): void {
-        const { transcript, handleKeywordMatch } = this.props as SpeechEnabledVoiceInputFieldProps;
+        const { finalTranscript, handleKeywordMatch } = this
+            .props as SpeechEnabledVoiceInputFieldProps;
 
         /* eslint-disable-next-line */
-        if (transcript !== prevProps.transcript) {
+        if (finalTranscript !== prevProps.finalTranscript) {
             this.setState({
-                processedTranscript: transcript,
+                processedTranscript: finalTranscript,
             });
+            console.log(
+                "newtranscript",
+                finalTranscript.replace(this.state.processedTranscript, ""),
+            );
             const matchingKeywords = transcriptContainsKeyword(
                 // only transcribe new text
-                transcript.replace(this.state.processedTranscript, ""),
+                finalTranscript.replace(this.state.processedTranscript, ""),
             );
-            handleKeywordMatch(matchingKeywords);
+            if (matchingKeywords.length > 0) {
+                handleKeywordMatch(matchingKeywords);
+            }
         }
     }
     public render(): JSX.Element {

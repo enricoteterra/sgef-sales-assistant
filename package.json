@@ -45,6 +45,7 @@
         "react": "^16.8.4",
         "react-dom": "^16.8.4",
         "react-speech-recognition": "^1.0.7",
+        "react-testing-library": "^6.0.0",
         "shortid": "^2.2.14"
     },
     "jest": {
@@ -54,8 +55,12 @@
             "js"
         ],
         "transform": {
-            "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+            "\\.(tsx?)$": "ts-jest"
         },
-        "testRegex": "/__tests__/.*\\.(ts|tsx|js)$"
+        "testRegex": "/__tests__/.*\\.(ts|tsx|js)$",
+        "moduleNameMapper": {
+            "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+            "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+        }
     }
 }
