@@ -22,10 +22,10 @@ const styles = (theme: any): any => ({
         // maxWidth: 400,
         marginBottom: 20,
     },
-    // media: {
-    //     height: 0,
-    //     paddingTop: "56.25%", // 16:9
-    // },
+    media: {
+        height: 0,
+        paddingTop: "56.25%", // 16:9
+    },
     actions: {
         display: "flex",
     },
@@ -42,7 +42,18 @@ const styles = (theme: any): any => ({
     avatar: {
         backgroundColor: red[500],
     },
+    header: {
+        textTransform: "capitalize",
+    },
 });
+
+const images: any = {
+    john:
+        "https://media.gq.com/photos/5ab5691f8b43895c76b4087c/16:9/w_1280%2Cc_limit/john-legend-style-evolution-.jpg",
+    tom: "https://dbpost.com/wp-content/uploads/2018/07/hardy-shirtless-esquire-uk.jpg",
+    wolfgang:
+        "https://www.wwe.com/f/styles/talent_champion_full/public/all/2017/01/CWC_UK_Wolfgang--f531110263582bdf7ccee1923ff66c96.jpg",
+};
 
 export interface PersonCardProps {
     classes: any;
@@ -63,7 +74,7 @@ class PersonCardComponent extends React.Component<PersonCardProps, PersonCardSta
     };
 
     public render(): JSX.Element {
-        const { classes, action, keyword, createdAt } = this.props;
+        const { classes, keyword, createdAt } = this.props;
 
         return (
             <Card className={classes.card}>
@@ -78,21 +89,18 @@ class PersonCardComponent extends React.Component<PersonCardProps, PersonCardSta
                             <MoreVertIcon />
                         </IconButton>
                     }
-                    title={`${action}: ${keyword}`}
+                    title={`${keyword}`}
                     subheader={createdAt}
+                    className={classes.header}
                 />
-                {/* <CardMedia
-                    className={classes.media}
-                    image="/static/images/cards/paella.jpg"
-                    title="Paella dish"
-                /> */}
-                <CardContent>
+                <CardMedia className={classes.media} image={images[keyword]} title="John Legend" />
+                {/* <CardContent>
                     <Typography component="p">
                         This impressive paella is a perfect party dish and a fun meal to cook
                         together with your guests. Add 1 cup of frozen peas along with the mussels,
                         if you like.
                     </Typography>
-                </CardContent>
+                </CardContent> */}
                 <CardActions className={classes.actions} disableActionSpacing>
                     <IconButton aria-label="Add to favorites">
                         <FavoriteIcon />

@@ -13,7 +13,26 @@ class App extends React.Component {
     public constructor(props: {}) {
         super(props);
         this.state = {
-            keywordMatches: [],
+            keywordMatches: [
+                {
+                    id: "someId",
+                    action: "get-person",
+                    keyword: "john",
+                    createdAt: "January 1st 2000, 12:00:00 am",
+                },
+                {
+                    id: "someId",
+                    action: "get-person",
+                    keyword: "wolfgang",
+                    createdAt: "January 1st 2000, 12:00:00 am",
+                },
+                {
+                    id: "someId",
+                    action: "get-person",
+                    keyword: "tom",
+                    createdAt: "January 1st 2000, 12:00:00 am",
+                },
+            ],
         };
     }
     public handleKeywordMatch = (newKeywordMatch: ActionAndKeyword[]): void => {

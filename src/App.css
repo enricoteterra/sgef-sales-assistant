@@ -1,8 +1,4 @@
-.GridList {
-    justify-content: space-evenly;
-}
 .PageWrapper {
-    width: 690px;
     padding: 50px;
     margin: 0 auto;
     text-align: center;

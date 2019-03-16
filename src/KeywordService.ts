@@ -16,8 +16,8 @@ const ActionKeywordMap: { [key: string]: Keyword[] } = {
 };
 const tokenizeString = (text: string): string[] => text.toLowerCase().split(" ");
 
-export const transcriptContainsKeyword = (transcript: string): ActionAndKeyword[] =>
-    tokenizeString(transcript)
+export const transcriptContainsKeyword = (transcript: string): ActionAndKeyword[] => {
+    const personMatches = tokenizeString(transcript)
         .filter(token => ActionKeywordMap["get-person"].includes(token))
         .map(keyword => ({
             id: shortid.generate(),
@@ -25,3 +25,34 @@ export const transcriptContainsKeyword = (transcript: string): ActionAndKeyword[
             keyword,
             createdAt: moment().format("MMMM Do YYYY, h:mm:ss a"),
         }));
+
+    /* eslint-disable */
+    const hasSendEmailAction = transcript.toLowerCase().indexOf("send email") !== -1;
+    const hasContractDetails = transcript.toLowerCase().indexOf("contract") !== -1;
+
+    const actionMatches = [
+        ...(hasSendEmailAction
+            ? [
+                  {
+                      id: shortid.generate(),
+                      action: "send-email",
+                      keyword: "",
+                      createdAt: moment().format("MMMM Do YYYY, h:mm:ss a"),
+                  },
+              ]
+            : []),
+        ...(hasContractDetails
+            ? [
+                  {
+                      id: shortid.generate(),
+                      action: "contract-info",
+                      keyword: "",
+                      createdAt: moment().format("MMMM Do YYYY, h:mm:ss a"),
+                  },
+              ]
+            : []),
+    ];
+    /* eslint-enable */
+
+    return [...personMatches, ...actionMatches];
+};
