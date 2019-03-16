@@ -9,8 +9,11 @@ export interface ActionFeedProps {
 
 export const ActionFeed = ({ feed }: ActionFeedProps): JSX.Element => (
     <Grid container direction="row" justify="center" alignItems="center">
-        {feed.reverse().map(({ action, keyword, createdAt, id }) => (
-            <PersonCard key={`${id}`} action={action} keyword={keyword} createdAt={createdAt} />
-        ))}
+        {feed
+            .slice()
+            .reverse()
+            .map(({ action, keyword, createdAt, id }) => (
+                <PersonCard key={`${id}`} action={action} keyword={keyword} createdAt={createdAt} />
+            ))}
     </Grid>
 );

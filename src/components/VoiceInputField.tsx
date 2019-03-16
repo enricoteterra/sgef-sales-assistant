@@ -4,7 +4,6 @@ import { Mic } from "@material-ui/icons";
 import { transcriptContainsKeyword } from "../KeywordService";
 import SpeechRecognition from "react-speech-recognition";
 import * as styles from "./VoiceInputField.css";
-import { debounce } from "lodash";
 
 interface SpeechRecognitionProps {
     transcript: string;
@@ -16,16 +15,33 @@ interface SpeechEnabledVoiceInputFieldProps extends SpeechRecognitionProps {
     handleKeywordMatch: Function;
 }
 
-class VoiceInputField extends React.Component {
+interface VoiceInputFieldState {
+    processedTranscript: string;
+}
+
+class VoiceInputField extends React.Component<
+    SpeechEnabledVoiceInputFieldProps,
+    VoiceInputFieldState
+> {
+    public constructor(props: any) {
+        super(props);
+        this.state = {
+            processedTranscript: "",
+        };
+    }
     public componentDidUpdate(prevProps: SpeechEnabledVoiceInputFieldProps): void {
-        const { transcript, handleKeywordMatch, resetTranscript } = this
-            .props as SpeechEnabledVoiceInputFieldProps;
+        const { transcript, handleKeywordMatch } = this.props as SpeechEnabledVoiceInputFieldProps;
 
         /* eslint-disable-next-line */
         if (transcript !== prevProps.transcript) {
-            const matchingKeywords = transcriptContainsKeyword(transcript);
+            this.setState({
+                processedTranscript: transcript,
+            });
+            const matchingKeywords = transcriptContainsKeyword(
+                // only transcribe new text
+                transcript.replace(this.state.processedTranscript, ""),
+            );
             handleKeywordMatch(matchingKeywords);
-            debounce(resetTranscript, 1000);
         }
     }
     public render(): JSX.Element {

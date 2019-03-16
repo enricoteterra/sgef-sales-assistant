@@ -70,7 +70,7 @@ class PersonCardComponent extends React.Component<PersonCardProps, PersonCardSta
                 <CardHeader
                     avatar={
                         <Avatar aria-label="Recipe" className={classes.avatar}>
-                            {action === "get-person" ? "P" : "E"}
+                            P
                         </Avatar>
                     }
                     action={

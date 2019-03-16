@@ -18,10 +18,10 @@ const tokenizeString = (text: string): string[] => text.toLowerCase().split(" ")
 
 export const transcriptContainsKeyword = (transcript: string): ActionAndKeyword[] =>
     ActionKeywordMap["get-person"]
+        .filter(keyword => tokenizeString(transcript).includes(keyword))
         .map(keyword => ({
             id: shortid.generate(),
             action: "get-person",
             keyword,
             createdAt: moment().format("MMMM Do YYYY, h:mm:ss a"),
-        }))
-        .filter(({ keyword }) => tokenizeString(transcript).includes(keyword));
+        }));
