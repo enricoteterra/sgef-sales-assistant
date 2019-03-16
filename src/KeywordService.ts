@@ -27,7 +27,9 @@ export const transcriptContainsKeyword = (transcript: string): ActionAndKeyword[
         }));
 
     /* eslint-disable */
-    const hasSendEmailAction = transcript.toLowerCase().indexOf("send email") !== -1;
+    const hasSendEmailAction =
+        transcript.toLowerCase().indexOf("send email") !== -1 ||
+        transcript.toLowerCase().indexOf("send an email") !== -1;
     const hasContractDetails = transcript.toLowerCase().indexOf("contract") !== -1;
 
     const actionMatches = [

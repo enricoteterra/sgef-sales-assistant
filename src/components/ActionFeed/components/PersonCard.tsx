@@ -21,6 +21,8 @@ const styles = (theme: any): any => ({
     card: {
         // maxWidth: 400,
         marginBottom: 20,
+        height: 245,
+        minWidth: 300,
     },
     media: {
         height: 0,
@@ -74,9 +76,9 @@ class PersonCardComponent extends React.Component<PersonCardProps, PersonCardSta
     };
 
     public render(): JSX.Element {
-        const { classes, keyword, createdAt } = this.props;
+        const { classes, action, keyword, createdAt } = this.props;
 
-        return (
+        const personCard = (
             <Card className={classes.card}>
                 <CardHeader
                     avatar={
@@ -89,36 +91,11 @@ class PersonCardComponent extends React.Component<PersonCardProps, PersonCardSta
                             <MoreVertIcon />
                         </IconButton>
                     }
-                    title={`${keyword}`}
-                    subheader={createdAt}
+                    title={keyword}
+                    subheader={"BMW"}
                     className={classes.header}
                 />
                 <CardMedia className={classes.media} image={images[keyword]} title="John Legend" />
-                {/* <CardContent>
-                    <Typography component="p">
-                        This impressive paella is a perfect party dish and a fun meal to cook
-                        together with your guests. Add 1 cup of frozen peas along with the mussels,
-                        if you like.
-                    </Typography>
-                </CardContent> */}
-                {/* <CardActions className={classes.actions} disableActionSpacing>
-                    <IconButton aria-label="Add to favorites">
-                        <FavoriteIcon />
-                    </IconButton>
-                    <IconButton aria-label="Share">
-                        <ShareIcon />
-                    </IconButton>
-                    <IconButton
-                        className={classnames(classes.expand, {
-                            [classes.expandOpen]: this.state.expanded,
-                        })}
-                        onClick={this.handleExpandClick}
-                        aria-expanded={this.state.expanded}
-                        aria-label="Show more"
-                    >
-                        <ExpandMoreIcon />
-                    </IconButton>
-                </CardActions> */}
                 <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
                     <CardContent>
                         <Typography paragraph>Method:</Typography>
@@ -150,6 +127,72 @@ class PersonCardComponent extends React.Component<PersonCardProps, PersonCardSta
                 </Collapse>
             </Card>
         );
+
+        const contractCard = (
+            <Card className={classes.card}>
+                <CardHeader
+                    avatar={
+                        <Avatar aria-label="Recipe" className={classes.avatar}>
+                            $
+                        </Avatar>
+                    }
+                    action={
+                        <IconButton>
+                            <MoreVertIcon />
+                        </IconButton>
+                    }
+                    title={`Financing Contract`}
+                    subheader={"New office equipment"}
+                    className={classes.header}
+                />
+                <CardMedia
+                    className={classes.media}
+                    image={
+                        "https://images.unsplash.com/photo-1485988412941-77a35537dae4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+                    }
+                    title="John Legend"
+                />
+            </Card>
+        );
+
+        const sendEmailCard = (
+            <Card className={classes.card}>
+                <CardHeader
+                    avatar={
+                        <Avatar aria-label="Recipe" className={classes.avatar}>
+                            M
+                        </Avatar>
+                    }
+                    action={
+                        <IconButton>
+                            <MoreVertIcon />
+                        </IconButton>
+                    }
+                    title={`..Email sent!`}
+                    subheader={"Attachment: Contract Details"}
+                    className={classes.header}
+                />
+                <CardMedia
+                    className={classes.media}
+                    image={"https://images.wisegeek.com/letter-delivered-by-mail-carrier.jpg"}
+                    title="John Legend"
+                />
+            </Card>
+        );
+
+        switch (action) {
+            case "get-person":
+                return personCard;
+                break;
+            case "contract-info":
+                return contractCard;
+                break;
+            case "send-email":
+                return sendEmailCard;
+                break;
+            default:
+                break;
+        }
     }
 }
 export const PersonCard = withStyles(styles)(PersonCardComponent);
