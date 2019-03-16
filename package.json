@@ -1,0 +1,32 @@
+{
+    "name": "socgen-sales-assistant",
+    "version": "1.0.0",
+    "main": "index.js",
+    "author": "Enrico Teterra (TW) <enrico.teterra@thoughtworks.com>",
+    "license": "MIT",
+    "scripts": {
+        "start": "webpack-dev-server --progress --colors --open",
+        "build": "webpack --mode production"
+    },
+    "devDependencies": {
+        "@types/react": "^16.8.8",
+        "@types/react-dom": "^16.8.2",
+        "@typescript-eslint/eslint-plugin": "^1.4.2",
+        "@typescript-eslint/parser": "^1.4.2",
+        "eslint": "^5.15.2",
+        "eslint-config-prettier": "^4.1.0",
+        "eslint-plugin-prettier": "^3.0.1",
+        "eslint-plugin-react": "^7.12.4",
+        "html-webpack-plugin": "^3.2.0",
+        "prettier": "^1.16.4",
+        "ts-loader": "^5.3.3",
+        "typescript": "^3.3.3333",
+        "webpack": "^4.29.6",
+        "webpack-cli": "^3.3.0",
+        "webpack-dev-server": "^3.2.1"
+    },
+    "dependencies": {
+        "react": "^16.8.4",
+        "react-dom": "^16.8.4"
+    }
+}
