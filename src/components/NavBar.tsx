@@ -6,7 +6,7 @@ export const NavBar: React.FunctionComponent = (): JSX.Element => (
         <AppBar position="static">
             <Toolbar>
                 <Typography variant="title" color="inherit">
-                    SGEF Sales Assistant
+                    SGEF Dino Assistant
                 </Typography>
             </Toolbar>
         </AppBar>

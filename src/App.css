@@ -1,12 +1,9 @@
-.App {
-    padding: 12px 22px;
+.GridList {
+    justify-content: space-evenly;
 }
 .PageWrapper {
-    width: 620px;
+    width: 690px;
+    padding: 50px;
     margin: 0 auto;
     text-align: center;
-}
-.VoiceInputField {
-    padding: 50px !important;
-    width: 100%;
 }

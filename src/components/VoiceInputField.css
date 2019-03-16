@@ -1,0 +1,16 @@
+.VoiceInputField {
+    padding-bottom: 50px !important;
+    width: 100%;
+}
+
+.Icon {
+    fill: red;
+    animation: pulse 2s ease-in-out infinite;
+    transition: color 1s ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        color: red;
+    }
+}
