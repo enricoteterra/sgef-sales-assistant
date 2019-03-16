@@ -20,7 +20,7 @@ const NavBar: React.FunctionComponent = (): JSX.Element => {
 
 class App extends React.Component {
     // eslint-disable-next-line @typescript-eslint/explicit-member-accessibility
-    render() {
+    render(): JSX.Element {
         return (
             <div className={styles.App}>
                 <NavBar />
