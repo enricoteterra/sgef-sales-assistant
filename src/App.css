@@ -1,2 +1,12 @@
 .App {
+    padding: 12px 22px;
+}
+.PageWrapper {
+    width: 620px;
+    margin: 0 auto;
+    text-align: center;
+}
+.VoiceInputField {
+    padding: 50px !important;
+    width: 100%;
 }
